@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Shopping Service", "Online Shopping Service\Online Shopping Service.csproj", "{42CECE9B-F83E-455D-8B25-47CB6716E1B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online Shopping Service.Tests", "Online Shopping Service.Tests\Online Shopping Service.Tests.csproj", "{E3AA699F-8510-4A82-A377-CF481129C62C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42CECE9B-F83E-455D-8B25-47CB6716E1B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42CECE9B-F83E-455D-8B25-47CB6716E1B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42CECE9B-F83E-455D-8B25-47CB6716E1B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42CECE9B-F83E-455D-8B25-47CB6716E1B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3AA699F-8510-4A82-A377-CF481129C62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3AA699F-8510-4A82-A377-CF481129C62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3AA699F-8510-4A82-A377-CF481129C62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3AA699F-8510-4A82-A377-CF481129C62C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D440F79-FAB0-43BE-A5BE-1E8E5DCE53C2}
+	EndGlobalSection
+EndGlobal

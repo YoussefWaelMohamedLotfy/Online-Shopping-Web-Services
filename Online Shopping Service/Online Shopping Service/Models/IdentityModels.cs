@@ -20,6 +20,10 @@ namespace Online_Shopping_Service.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        // Add all tables here
+
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

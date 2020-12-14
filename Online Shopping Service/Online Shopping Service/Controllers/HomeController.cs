@@ -15,7 +15,7 @@ namespace Online_Shopping_Service.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "A simple online shopping store for your faourite products.";
+            ViewBag.Message = "A simple online shopping store for your favorite products.";
 
             return View();
         }

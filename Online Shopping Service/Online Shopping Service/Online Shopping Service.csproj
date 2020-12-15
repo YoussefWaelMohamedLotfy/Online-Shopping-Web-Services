@@ -189,12 +189,18 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202012142250311_InitialModel.cs" />
     <Compile Include="Migrations\202012142250311_InitialModel.designer.cs">
       <DependentUpon>202012142250311_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012151909537_AddTablesToDb.cs" />
+    <Compile Include="Migrations\202012151909537_AddTablesToDb.designer.cs">
+      <DependentUpon>202012151909537_AddTablesToDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -203,6 +209,9 @@
     <Compile Include="Models\Store\Card.cs" />
     <Compile Include="Models\Store\CartItem.cs" />
     <Compile Include="Models\Store\Item.cs" />
+    <Compile Include="Models\Store\OrderCart.cs" />
+    <Compile Include="Persistence\Repositories\Repository.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -266,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Persistence\EntityConfigurations\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +294,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202012142250311_InitialModel.resx">
       <DependentUpon>202012142250311_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012151909537_AddTablesToDb.resx">
+      <DependentUpon>202012151909537_AddTablesToDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

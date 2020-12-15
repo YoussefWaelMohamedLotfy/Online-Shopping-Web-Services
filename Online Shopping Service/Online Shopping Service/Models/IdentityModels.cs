@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Online_Shopping_Service.Models.Store;
 
 namespace Online_Shopping_Service.Models
 {
@@ -21,8 +22,10 @@ namespace Online_Shopping_Service.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         // Add all tables here
-
-
+        public DbSet<Card> Cards { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<OrderCart> OrderCart { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -32,6 +35,29 @@ namespace Online_Shopping_Service.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Card>().HasKey(c => c.CardNumber);
+
+            // One to One
+            modelBuilder.Entity<Item>()
+                .HasRequired(c => c.CartItem)
+                .WithRequiredPrincipal(c => c.Item);
+
+            modelBuilder.Entity<CartItem>()
+                .HasRequired(c => c.Item)
+                .WithRequiredDependent(c => c.CartItem);
+
+            // One to many
+            modelBuilder.Entity<OrderCart>()
+                .HasMany(c => c.Items)
+                .WithRequired(c => c.Cart)
+                .HasForeignKey(c => c.ItemID);
+
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

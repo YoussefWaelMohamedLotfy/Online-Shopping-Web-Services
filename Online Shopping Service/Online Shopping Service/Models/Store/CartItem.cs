@@ -7,8 +7,14 @@ namespace Online_Shopping_Service.Models.Store
 {
     public class CartItem
     {
-        public Item Item { get; set; }
+        public int ID { get; set; }
+
+        public int ItemID { get; set; }
+
+        public virtual Item Item { get; set; }
 
         public int Count { get; set; }
+
+        public OrderCart Cart { get; set; }
     }
 }

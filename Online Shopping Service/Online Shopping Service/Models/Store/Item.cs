@@ -13,10 +13,12 @@ namespace Online_Shopping_Service.Models.Store
 
         public string Description { get; set; }
 
-        public float Price { get; set; }
+        public double Price { get; set; }
 
         public string Category { get; set; }
 
         public byte RemainingCount { get; set; }
+
+        public virtual CartItem CartItem { get; set; }
     }
 }

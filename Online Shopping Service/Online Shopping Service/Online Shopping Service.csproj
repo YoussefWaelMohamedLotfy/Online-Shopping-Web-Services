@@ -189,6 +189,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Store\AdminController.cs" />
+    <Compile Include="Controllers\Store\UserController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Global.asax.cs">
@@ -201,6 +203,10 @@
     <Compile Include="Migrations\202012151909537_AddTablesToDb.cs" />
     <Compile Include="Migrations\202012151909537_AddTablesToDb.designer.cs">
       <DependentUpon>202012151909537_AddTablesToDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012160815264_SeedTables.cs" />
+    <Compile Include="Migrations\202012160815264_SeedTables.designer.cs">
+      <DependentUpon>202012160815264_SeedTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -275,8 +281,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DTOs\" />
     <Folder Include="Persistence\EntityConfigurations\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -297,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012151909537_AddTablesToDb.resx">
       <DependentUpon>202012151909537_AddTablesToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012160815264_SeedTables.resx">
+      <DependentUpon>202012160815264_SeedTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

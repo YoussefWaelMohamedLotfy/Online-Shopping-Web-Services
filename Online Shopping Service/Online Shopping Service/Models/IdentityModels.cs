@@ -56,7 +56,6 @@ namespace Online_Shopping_Service.Models
                 .WithRequired(c => c.Cart)
                 .HasForeignKey(c => c.ItemID);
 
-
             base.OnModelCreating(modelBuilder);
         }
     }

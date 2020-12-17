@@ -189,9 +189,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\Store\AdminController.cs" />
-    <Compile Include="Controllers\Store\UserController.cs" />
+    <Compile Include="Controllers\Store\AdminsController.cs" />
+    <Compile Include="Controllers\Store\UsersController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Core\Repositories\IItemsRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -216,6 +217,7 @@
     <Compile Include="Models\Store\CartItem.cs" />
     <Compile Include="Models\Store\Item.cs" />
     <Compile Include="Models\Store\OrderCart.cs" />
+    <Compile Include="Persistence\Repositories\ItemsRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -281,6 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\APIs\" />
     <Folder Include="DTOs\" />
     <Folder Include="Persistence\EntityConfigurations\" />
     <Folder Include="ViewModels\" />

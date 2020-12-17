@@ -27,13 +27,13 @@ namespace Online_Shopping_Service.Controllers.Store
             _unitOfWork = unitOfWork;
         }
 
-        // GET: Admin
+        // GET: Admins
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: /Admin/GetItems
+        // GET: /Admins/GetItems
         [System.Web.Http.HttpGet]
         public IEnumerable<Item> GetItems()
         {
@@ -41,7 +41,7 @@ namespace Online_Shopping_Service.Controllers.Store
             return items;
         }
 
-        // GET: /Admin/GetItem/1
+        // GET: /Admins/GetItem/1
         [System.Web.Http.HttpGet]
         public ActionResult GetItem(int id)
         {

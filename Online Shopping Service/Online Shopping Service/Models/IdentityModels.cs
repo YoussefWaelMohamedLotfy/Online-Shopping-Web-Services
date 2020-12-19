@@ -43,20 +43,7 @@ namespace Online_Shopping_Service.Models
             //modelBuilder.Entity<Card>()
             //    .HasKey(c => c.CardNumber);
 
-            // One to One
-            //modelBuilder.Entity<Item>()
-            //    .HasRequired(c => c.CartItem)
-            //    .WithRequiredPrincipal(c => c.Item);
-
-            //modelBuilder.Entity<CartItem>()
-            //    .HasRequired(c => c.Item)
-            //    .WithRequiredDependent(c => c.CartItem);
-
-            //// One to many
-            //modelBuilder.Entity<OrderCart>()
-            //    .HasMany(c => c.Items)
-            //    .WithRequired(c => c.Cart)
-            //    .HasForeignKey(c => c.ItemID);
+            
 
             base.OnModelCreating(modelBuilder);
         }

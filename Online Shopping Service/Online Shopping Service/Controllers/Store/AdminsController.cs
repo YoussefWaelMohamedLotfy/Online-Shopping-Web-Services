@@ -33,25 +33,6 @@ namespace Online_Shopping_Service.Controllers.Store
             return View();
         }
 
-        // GET: /Admins/GetItems
-        [System.Web.Http.HttpGet]
-        public IEnumerable<Item> GetItems()
-        {
-            var items = _context.Items.ToList();
-            return items;
-        }
-
-        // GET: /Admins/GetItem/1
-        [System.Web.Http.HttpGet]
-        public ActionResult GetItem(int id)
-        {
-            var item = _context.Items.SingleOrDefault(c => c.ID == id);
-
-            if (item == null)
-                return HttpNotFound();
-
-            return View();
-        }
 
 
     }

@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Online_Shopping_Service.Models.Store;
 
-namespace Online_Shopping_Service.Models.Store
+namespace Online_Shopping_Service.DTOs
 {
-    public class OrderCart
+    public class OrderCartDto
     {
         public int ID { get; set; }
 
         public int Total { get; set; }
 
         public string PaymentMethod { get; set; }
-        
-        public string UserEmail { get; set; }
-
-        public DateTime PurchaseDate { get; set; }
 
         public ICollection<CartItem> Items { get; set; }
     }

@@ -11,9 +11,13 @@ namespace Online_Shopping_Service.Models.Store
 
         public int ItemID { get; set; }
 
+        public string UserEmail { get; set; }
+
         public virtual Item Item { get; set; }
 
         public int Count { get; set; }
+        
+        public int CartID { get; set; }
 
         public OrderCart Cart { get; set; }
     }

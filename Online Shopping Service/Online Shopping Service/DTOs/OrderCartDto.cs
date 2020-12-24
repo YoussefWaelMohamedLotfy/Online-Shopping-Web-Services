@@ -10,7 +10,7 @@ namespace Online_Shopping_Service.DTOs
     {
         public int ID { get; set; }
 
-        public int Total { get; set; }
+        public double Total { get; set; }
 
         public string PaymentMethod { get; set; }
 

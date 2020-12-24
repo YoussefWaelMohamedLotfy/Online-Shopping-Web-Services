@@ -252,6 +252,7 @@
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IItemsRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
+    <Compile Include="DTOs\CartItemDto.cs" />
     <Compile Include="DTOs\ItemDto.cs" />
     <Compile Include="DTOs\OrderCartDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -296,6 +297,14 @@
     <Compile Include="Migrations\202012191552303_RemoveDbTables.cs" />
     <Compile Include="Migrations\202012191552303_RemoveDbTables.designer.cs">
       <DependentUpon>202012191552303_RemoveDbTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012191624265_AddDbTables.cs" />
+    <Compile Include="Migrations\202012191624265_AddDbTables.designer.cs">
+      <DependentUpon>202012191624265_AddDbTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012241550516_UpdateTotalDatatypeInOrderCartTable.cs" />
+    <Compile Include="Migrations\202012241550516_UpdateTotalDatatypeInOrderCartTable.designer.cs">
+      <DependentUpon>202012241550516_UpdateTotalDatatypeInOrderCartTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -421,6 +430,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012191552303_RemoveDbTables.resx">
       <DependentUpon>202012191552303_RemoveDbTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012191624265_AddDbTables.resx">
+      <DependentUpon>202012191624265_AddDbTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012241550516_UpdateTotalDatatypeInOrderCartTable.resx">
+      <DependentUpon>202012241550516_UpdateTotalDatatypeInOrderCartTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

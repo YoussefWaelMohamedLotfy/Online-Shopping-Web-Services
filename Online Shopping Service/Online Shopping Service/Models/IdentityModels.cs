@@ -23,10 +23,10 @@ namespace Online_Shopping_Service.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         // Add all tables here
-        //public DbSet<Card> Cards { get; set; }
-        //public DbSet<Item> Items { get; set; }
-        //public DbSet<CartItem> CartItems { get; set; }
-        //public DbSet<OrderCart> OrderCart { get; set; }
+        public DbSet<Card> Cards { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<OrderCart> OrderCarts { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -40,10 +40,21 @@ namespace Online_Shopping_Service.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Card>()
-            //    .HasKey(c => c.CardNumber);
+            modelBuilder.Entity<Card>()
+                .HasKey(c => c.CardNumber);
 
+            modelBuilder.Entity<OrderCart>()
+                .HasKey(c => c.CartID);
+
+            modelBuilder.Entity<CartItem>()
+                .HasRequired(c => c.Item)
+                .WithMany(c => c.CartItems)
+                .HasForeignKey(c => c.ItemID);
             
+            modelBuilder.Entity<OrderCart>()
+                .HasMany(c => c.CartItems)
+                .WithRequired(c => c.OrderCart)
+                .HasForeignKey(c => c.CartID);
 
             base.OnModelCreating(modelBuilder);
         }

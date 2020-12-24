@@ -14,6 +14,12 @@ namespace Online_Shopping_Service.Persistence.MappingProfiles
         {
             CreateMap<Item, ItemDto>();
             CreateMap<ItemDto, Item>();
+
+            CreateMap<CartItem, CartItemDto>();
+            CreateMap<CartItemDto, CartItem>();
+
+            CreateMap<OrderCartDto, OrderCart>();
+            CreateMap<OrderCart, OrderCartDto>();
         }
     }
 }

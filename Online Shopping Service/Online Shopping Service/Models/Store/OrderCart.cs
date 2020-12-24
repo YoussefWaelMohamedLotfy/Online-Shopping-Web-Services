@@ -7,16 +7,25 @@ namespace Online_Shopping_Service.Models.Store
 {
     public class OrderCart
     {
-        public int ID { get; set; }
+        public OrderCart()
+        {
+            CartItems = new HashSet<CartItem>();
+        }
 
-        public int Total { get; set; }
+        public int CartID { get; set; }
+
+        public double Total { get; set; }
 
         public string PaymentMethod { get; set; }
         
         public string UserEmail { get; set; }
 
-        public DateTime PurchaseDate { get; set; }
+        public bool IsCheckedOut { get; set; }
 
-        public ICollection<CartItem> Items { get; set; }
+        public DateTime? PurchaseDate { get; set; }
+        
+        public DateTime? ArrivalDate { get; set; }
+
+        public ICollection<CartItem> CartItems { get; set; }
     }
 }

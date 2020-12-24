@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Online_Shopping_Service.Models.Store
+namespace Online_Shopping_Service.DTOs
 {
-    public class CartItem
+    public class CartItemDto
     {
         public int ID { get; set; }
 
@@ -14,13 +14,9 @@ namespace Online_Shopping_Service.Models.Store
         public string UserEmail { get; set; }
 
         public int Count { get; set; }
-        
+
         public bool IsCheckedOut { get; set; }
 
         public int CartID { get; set; }
-        
-        public virtual Item Item { get; set; }
-        
-        public virtual OrderCart OrderCart { get; set; }
     }
 }

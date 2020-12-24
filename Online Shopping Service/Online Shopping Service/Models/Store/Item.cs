@@ -7,6 +7,11 @@ namespace Online_Shopping_Service.Models.Store
 {
     public class Item
     {
+        public Item()
+        {
+            CartItems = new HashSet<CartItem>();
+        }
+
         public int ID { get; set; }
 
         public string Name { get; set; }
@@ -19,6 +24,6 @@ namespace Online_Shopping_Service.Models.Store
 
         public byte RemainingCount { get; set; }
 
-        public virtual CartItem CartItem { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
     }
 }

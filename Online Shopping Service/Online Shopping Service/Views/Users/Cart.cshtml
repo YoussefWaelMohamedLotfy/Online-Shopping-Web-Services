@@ -1,0 +1,32 @@
+﻿@model Online_Shopping_Service.ViewModels.CartViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cartItem in Model.CartItems)
+            {
+                <tr>
+                    <td>@cartItem.Item.Name</td>
+                    <td>@cartItem.Item.Price</td>
+                    <td>@cartItem.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

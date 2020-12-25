@@ -27,13 +27,17 @@ namespace Online_Shopping_Service.Controllers.Store
             _unitOfWork = unitOfWork;
         }
 
-        // GET: Admins
+        // GET: /Admins
         public ActionResult Index()
         {
             return View();
         }
 
-
+        // GET: /Admins/CreateItem
+        public ActionResult CreateItem()
+        {
+            return View("NewItem");
+        }
 
     }
 }

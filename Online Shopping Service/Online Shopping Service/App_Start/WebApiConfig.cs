@@ -24,6 +24,18 @@ namespace Online_Shopping_Service
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
+            config.Routes.MapHttpRoute(
+                name: "UsersApi",
+                routeTemplate: "Users/api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+            
+            config.Routes.MapHttpRoute(
+                name: "AdminsApi",
+                routeTemplate: "Admins/api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }

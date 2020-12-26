@@ -8,11 +8,16 @@ namespace Online_Shopping_Service.ViewModels
 {
     public class StoreViewModel
     {
-        public List<Item> Items { get; set; }
+        public IEnumerable<Item> Items { get; set; }
     }
 
     public class CartViewModel
     {
-        public List<CartItem> CartItems { get; set; }
+        public IEnumerable<CartItem> CartItems { get; set; }
+    }
+
+    public class NewItemViewModel
+    {
+        public Item Item { get; set; }
     }
 }

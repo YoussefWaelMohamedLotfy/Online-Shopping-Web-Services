@@ -11,11 +11,11 @@ namespace Online_Shopping_Service.Controllers.Store
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext context;
-        //private readonly string email;
+        private readonly string email;
 
         public UsersController()
         {
-            //email = User.Identity.GetUserName();
+            
             context = new ApplicationDbContext();
         }
 
@@ -49,6 +49,14 @@ namespace Online_Shopping_Service.Controllers.Store
             };
 
             return View("Cart", cartViewModel);
+        }
+
+        // GET: /Users/ViewDetails
+        public ActionResult ViewDetails(int id)
+        {
+            var itemInDb = context.Items.SingleOrDefault(c => c.ID == id);
+
+            return View("ViewDetails", itemInDb);
         }
     }
 }

@@ -1,0 +1,34 @@
+﻿@model Online_Shopping_Service.ViewModels.NewItemViewModel
+@{
+    ViewBag.Title = "NewItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>New Item</h1>
+
+@using (Html.BeginForm("AddNewItem", "Admins"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.Name)
+        @Html.TextBoxFor(m => m.Item.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.Description)
+        @Html.TextAreaFor(m => m.Item.Description, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.Price)
+        @Html.TextBoxFor(m => m.Item.Price, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.Category)
+        @Html.TextBoxFor(m => m.Item.Category, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Item.RemainingCount)
+        @Html.TextBoxFor(m => m.Item.RemainingCount, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m => m.Item.ID)
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}

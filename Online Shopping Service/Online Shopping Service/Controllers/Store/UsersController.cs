@@ -42,10 +42,12 @@ namespace Online_Shopping_Service.Controllers.Store
         public ActionResult ShowCart()
         {
             var items = context.CartItems.Where(c => /*c.UserEmail == email &&*/ c.IsCheckedOut == false).ToList();
+            var cartTotal = context.CartItems.Where(c => /*c.UserEmail == email &&*/ c.IsCheckedOut == false).Select(c => c.Item.Price * c.Count).Sum();
 
             var cartViewModel = new CartViewModel
             {
-                CartItems = items
+                CartItems = items,
+                CartTotal = cartTotal
             };
 
             return View("Cart", cartViewModel);

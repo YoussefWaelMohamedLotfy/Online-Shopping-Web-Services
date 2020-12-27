@@ -19,6 +19,13 @@ namespace Online_Shopping_Service.Controllers.APIs
             context = new ApplicationDbContext();
         }
 
+        // GET: /api/User/GetItems
+        [HttpGet]
+        public IHttpActionResult GetItems()
+        {
+            return Json(context.Items.ToList().Select(StoreMapper.mapper.Map<Item, ItemDto>));
+        }
+
         // GET: /api/User/ViewCart
         [HttpGet]
         public IHttpActionResult ViewCart()

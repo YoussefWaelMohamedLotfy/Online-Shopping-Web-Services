@@ -9,12 +9,14 @@
 </head>
 <body>
     <h1>Your Cart</h1>
-    <table class="table table-bordered table-hover">
+    <table id="cartItems" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Item Name</th>
                 <th>Price</th>
                 <th>Count</th>
+                <th>Total</th>
+                <th>Remove</th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +26,42 @@
                     <td>@cartItem.Item.Name</td>
                     <td>@cartItem.Item.Price</td>
                     <td>@cartItem.Count</td>
+                    <td>@cartItem.Item.Price * @cartItem.Count</td>
+                    <td>
+                        <button data-cart-item-id="@cartItem.ItemID" class="btn-link js-remove">Remove from cart</button>
+                    </td>
                 </tr>
             }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@Model.CartTotal</td>
+            </tr>
         </tbody>
     </table>
+    <button class="btn-primary js-proceed">Proceed to Checkout</button>
 </body>
 </html>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#cartItems").on("click", ".js-remove", function () {
+                var button = $(this);
+
+                bootbox.confirm("Do you want to remove from cart?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "api/User/RemoveFromCart/" + button.attr("data-cart-item-id"),
+                            method: "GET",
+                            success: console.log("Remove from cart success")
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+}

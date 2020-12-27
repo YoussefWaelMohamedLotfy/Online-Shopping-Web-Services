@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Items)
+            @*@foreach (var item in Model.Items)
             {
                 <tr>
                     <td>@Html.ActionLink(item.Name, "EditItem", "Admins", new { id = item.ID }, null)</td>
@@ -30,7 +30,7 @@
                         <button data-item-id="@item.ID" class="btn-link js-add">Add to cart</button>
                     </td>
                 </tr>
-            }
+            }*@
         </tbody>
     </table>
 </body>
@@ -40,6 +40,33 @@
 {
     <script>
         $(document).ready(function () {
+            $("#items").DataTable({
+                ajax: {
+                    url: "/api/User/GetItems",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "Name",
+                        render: function (data, type, item) {
+                            return "<a href='/api/" + item.ID + "'>" + item.Name + "</a>";
+                        }
+                    },
+                    {
+                        data: "Price"
+                    },
+                    {
+                        data: "RemainingCount"
+                    },
+                    {
+                        data: "ID",
+                        render: function (data) {
+                            return "<button class='btn-link js-add' data-item-id=" + data + ">Add to cart</button>";
+                        }
+                    }
+                ]
+            });
+
             $("#items").on("click", ".js-add", function () {
                 $.ajax({
                     url: "api/User/AddToCart/" + $(this).attr("data-item-id"),

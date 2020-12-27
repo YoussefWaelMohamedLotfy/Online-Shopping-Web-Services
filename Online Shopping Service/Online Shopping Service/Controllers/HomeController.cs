@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Online_Shopping_Service.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()

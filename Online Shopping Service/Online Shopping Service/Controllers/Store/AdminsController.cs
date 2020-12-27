@@ -74,7 +74,7 @@ namespace Online_Shopping_Service.Controllers.Store
 
             context.SaveChanges();
 
-            return RedirectToAction("ShowStore", "Users");
+            return RedirectToAction("ShowStoreUser", "Users");
         }
 
     }

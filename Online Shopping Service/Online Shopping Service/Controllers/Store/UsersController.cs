@@ -11,22 +11,24 @@ namespace Online_Shopping_Service.Controllers.Store
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext context;
-        private readonly string email;
+        private string email;
 
         public UsersController()
         {
-            
             context = new ApplicationDbContext();
         }
 
-        // GET: User
+        // GET: Users
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole("IsAdmin"))
+                return View("Store");
+
+            return View("StoreReadOnly");
         }
 
-        // GET: /Users/ShowStore
-        public ActionResult ShowStore()
+        // GET: /Users/ShowStoreUser
+        public ActionResult ShowStoreUser()
         {
             var items = context.Items.ToList();
 
@@ -41,8 +43,9 @@ namespace Online_Shopping_Service.Controllers.Store
         // GET: /Users/ShowCart
         public ActionResult ShowCart()
         {
-            var items = context.CartItems.Where(c => /*c.UserEmail == email &&*/ c.IsCheckedOut == false).ToList();
-            var cartTotal = context.CartItems.Where(c => /*c.UserEmail == email &&*/ c.IsCheckedOut == false).Select(c => c.Item.Price * c.Count).Sum();
+            email = User.Identity.GetUserName();
+            var items = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).ToList();
+            var cartTotal = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).Select(c => c.Item.Price * c.Count).DefaultIfEmpty(0).Sum();
 
             var cartViewModel = new CartViewModel
             {

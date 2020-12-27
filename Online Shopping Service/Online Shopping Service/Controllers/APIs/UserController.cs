@@ -91,6 +91,16 @@ namespace Online_Shopping_Service.Controllers.APIs
                 return NotFound();
 
             context.CartItems.Remove(cartIteminCart);
+
+            var cartItemsCount = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false && c.CartID == cartIteminCart.CartID).Count();
+            context.SaveChanges();
+
+            if (cartItemsCount - 1 == 0)
+            {
+                var cart = context.OrderCarts.SingleOrDefault(c => c.UserEmail == email && c.IsCheckedOut == false && c.CartID == cartIteminCart.CartID);
+                context.OrderCarts.Remove(cart);
+            }
+
             context.SaveChanges();
 
             return Ok();

@@ -8,39 +8,47 @@
     <title>Cart</title>
 </head>
 <body>
-    <h1>Your Cart</h1>
-    <table id="cartItems" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Item Name</th>
-                <th>Price</th>
-                <th>Count</th>
-                <th>Total</th>
-                <th>Remove</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var cartItem in Model.CartItems)
-            {
+    @if (Model.CartItems.Count() == 0)
+    {
+        <h1>You don't have any items in the cart. Go add some.</h1>
+    }
+    else
+    {
+        <h1>Your Cart</h1>
+        <table id="cartItems" class="table table-bordered table-hover">
+            <thead>
                 <tr>
-                    <td>@cartItem.Item.Name</td>
-                    <td>@cartItem.Item.Price</td>
-                    <td>@cartItem.Count</td>
-                    <td>@cartItem.Item.Price * @cartItem.Count</td>
-                    <td>
-                        <button data-cart-item-id="@cartItem.ItemID" class="btn-link js-remove">Remove from cart</button>
-                    </td>
+                    <th>Item Name</th>
+                    <th>Price</th>
+                    <th>Count</th>
+                    <th>Total</th>
+                    <th>Remove</th>
                 </tr>
-            }
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>@Model.CartTotal</td>
-            </tr>
-        </tbody>
-    </table>
-    <button class="btn-primary js-proceed">Proceed to Checkout</button>
+            </thead>
+            <tbody>
+                @foreach (var cartItem in Model.CartItems)
+                {
+                    <tr>
+                        <td>@cartItem.Item.Name</td>
+                        <td>@cartItem.Item.Price</td>
+                        <td>@cartItem.Count</td>
+                        <td>@cartItem.Item.Price * @cartItem.Count</td>
+                        <td>
+                            <button data-cart-item-id="@cartItem.ItemID" class="btn-link js-remove">Remove from cart</button>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@Model.CartTotal</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn-primary js-proceed">Proceed to Checkout</button>
+    }
+
 </body>
 </html>
 
@@ -56,7 +64,15 @@
                         $.ajax({
                             url: "api/User/RemoveFromCart/" + button.attr("data-cart-item-id"),
                             method: "GET",
-                            success: console.log("Remove from cart success")
+                            success: function () {
+                                button.parents("tr").remove();
+                                console.log("Remove from cart success");
+                                toastr.success("Removing from cart successful.");
+                                document.location.reload(true);
+                            },
+                            error: function () {
+                                toastr.error("Removing from cart failed.");
+                            }
                         });
                     }
                 });

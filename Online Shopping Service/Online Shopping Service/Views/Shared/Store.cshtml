@@ -1,6 +1,5 @@
 ﻿@model Online_Shopping_Service.ViewModels.StoreViewModel
 
-
 <!DOCTYPE html>
 
 <html>
@@ -10,13 +9,19 @@
 </head>
 <body>
     <h1>Store Browse</h1>
+    <p>
+        @Html.ActionLink("Add new Item", "CreateItem", "Admins", null, new { @class = "btn btn-primary" })
+    </p>
+    <br/>
     <table id="items" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Item Name</th>
+                <th>Description</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Count Remaining</th>
-                <th>Add to cart</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +45,7 @@
 {
     <script>
         $(document).ready(function () {
-            $("#items").DataTable({
+            var table = $("#items").DataTable({
                 ajax: {
                     url: "/api/User/GetItems",
                     dataSrc: ""
@@ -49,8 +54,14 @@
                     {
                         data: "Name",
                         render: function (data, type, item) {
-                            return "<a href='/api/" + item.ID + "'>" + item.Name + "</a>";
+                            return "<a href='/Admins/EditItem/" + item.ID + "'>" + item.Name + "</a>";
                         }
+                    },
+                    {
+                        data: "Description"
+                    },
+                    {
+                        data: "Category"
                     },
                     {
                         data: "Price"
@@ -61,17 +72,30 @@
                     {
                         data: "ID",
                         render: function (data) {
-                            return "<button class='btn-link js-add' data-item-id=" + data + ">Add to cart</button>";
+                            return "<button class='btn-link js-remove' data-item-id=" + data + ">Delete</button>";
                         }
                     }
                 ]
             });
 
-            $("#items").on("click", ".js-add", function () {
-                $.ajax({
-                    url: "api/User/AddToCart/" + $(this).attr("data-item-id"),
-                    method: "GET",
-                    success: console.log("Add to cart success")
+            $("#items").on("click", ".js-remove", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete from Database?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "api/Admin/DeleteItem/" + button.attr("data-item-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                                console.log("Delete Item Success");
+                                toastr.success("Deleting Item from Database Successful.");
+                            },
+                            error: function() {
+                                toastr.error("Deleting Item from Database failed.");
+                            }
+                        });
+                    }
                 });
             });
         });

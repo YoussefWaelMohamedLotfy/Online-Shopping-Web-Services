@@ -46,7 +46,9 @@
                 </tr>
             </tbody>
         </table>
-        <button class="btn-primary js-proceed">Proceed to Checkout</button>
+        <button id="proceed" data-cart-id="@Model.CartID" class="btn-default js-proceed">
+            @Html.ActionLink("Proceed to Checkout", "Checkout", "Users")
+        </button>
     }
 
 </body>
@@ -74,6 +76,17 @@
                                 toastr.error("Removing from cart failed.");
                             }
                         });
+                    }
+                });
+            });
+
+            $("#proceed").on("click", ".js-proceed", function () {
+                $.ajax({
+                    url: "api/User/ProceedToCheckout",
+                    method: "GET",
+                    success: function () {
+                        console.log("Checkout Success.");
+                        window.location.href = "/Users/Checkout/";
                     }
                 });
             });

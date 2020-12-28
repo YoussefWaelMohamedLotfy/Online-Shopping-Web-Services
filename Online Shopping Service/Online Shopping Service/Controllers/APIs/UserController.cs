@@ -78,7 +78,23 @@ namespace Online_Shopping_Service.Controllers.APIs
 
             context.SaveChanges();
 
+            double total = CalculateTotal();
+
             return Ok();
+        }
+
+        private double CalculateTotal()
+        {
+            var cartTotalPrice = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).Select(c => c.Item.Price * c.Count).DefaultIfEmpty(0).Sum();
+            var cart = context.OrderCarts.SingleOrDefault(c => c.UserEmail == email && c.IsCheckedOut == false);
+
+            if (cart == null)
+                return 0;
+            else
+                cart.Total = cartTotalPrice;
+
+            context.SaveChanges();
+            return cartTotalPrice;
         }
 
         // GET: /api/User/RemoveFromCart/2
@@ -102,6 +118,8 @@ namespace Online_Shopping_Service.Controllers.APIs
             }
 
             context.SaveChanges();
+
+            double total = CalculateTotal();
 
             return Ok();
         }

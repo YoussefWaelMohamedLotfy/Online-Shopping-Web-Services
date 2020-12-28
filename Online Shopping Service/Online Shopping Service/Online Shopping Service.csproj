@@ -629,6 +629,7 @@
     <Content Include="Views\Admins\CreateItem.cshtml" />
     <Content Include="Views\Users\ViewDetails.cshtml" />
     <Content Include="Views\Shared\StoreReadOnly.cshtml" />
+    <Content Include="Views\Users\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

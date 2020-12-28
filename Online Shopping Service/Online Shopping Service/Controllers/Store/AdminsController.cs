@@ -77,5 +77,15 @@ namespace Online_Shopping_Service.Controllers.Store
             return RedirectToAction("ShowStoreUser", "Users");
         }
 
+        [HttpPost]
+        public ActionResult UpdateExistingItem(NewItemViewModel viewModel)
+        {
+            var itemInDb = context.Items.Single(c => c.ID == viewModel.Item.ID);
+            Item item = StoreMapper.mapper.Map(viewModel.Item, itemInDb);
+            context.SaveChanges();
+
+            return RedirectToAction("ShowStoreUser", "Users");
+        }
+
     }
 }

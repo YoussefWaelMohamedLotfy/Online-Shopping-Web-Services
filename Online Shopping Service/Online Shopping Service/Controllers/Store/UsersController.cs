@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Online_Shopping_Service.Models;
 using Online_Shopping_Service.Models.Store;
@@ -46,10 +47,12 @@ namespace Online_Shopping_Service.Controllers.Store
             email = User.Identity.GetUserName();
             var items = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).ToList();
             var cartTotal = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).Select(c => c.Item.Price * c.Count).DefaultIfEmpty(0).Sum();
+            int cartID = context.OrderCarts.SingleOrDefault(c => c.UserEmail == email && c.IsCheckedOut == false).CartID;
 
             var cartViewModel = new CartViewModel
             {
                 CartItems = items,
+                CartID = cartID,
                 CartTotal = cartTotal
             };
 
@@ -62,6 +65,26 @@ namespace Online_Shopping_Service.Controllers.Store
             var itemInDb = context.Items.SingleOrDefault(c => c.ID == id);
 
             return View("ViewDetails", itemInDb);
+        }
+
+        // GET: /Users/Checkout
+        public ActionResult Checkout()
+        {
+            email = User.Identity.GetUserName();
+            var items = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).ToList();
+            var userCart = context.OrderCarts.SingleOrDefault(c => c.UserEmail == email && c.IsCheckedOut == false);
+            var cartTotal = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).Select(c => c.Item.Price * c.Count).DefaultIfEmpty(0).Sum();
+            var user = context.Users.Single(c => c.Email == email);
+
+            var checkoutViewModel = new CheckoutViewModel
+            {
+                Cart = userCart,
+                CartItems = items,
+                CartTotal = cartTotal,
+                CurrentUser = user
+            };
+
+            return View(checkoutViewModel);
         }
     }
 }

@@ -1,0 +1,47 @@
+﻿@model Online_Shopping_Service.ViewModels.CheckoutViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Checkout</title>
+</head>
+<body>
+    <h1>Order Checkout</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Items</th>
+                <th>
+
+                    <ul>
+                        @foreach (var item in Model.Cart.CartItems)
+                        {
+                            <li>@item.Item.Name - Count: @item.Count - Price per one: @item.Item.Price</li>
+                        }
+                    </ul>
+                </th>
+            </tr>
+            <tr>
+                <th>Total Price</th>
+                <th>@Model.CartTotal</th>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <th>@Model.CurrentUser.Email - Confirmed: @Model.CurrentUser.EmailConfirmed</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Confirm Order ?</h2>
+    <button class="btn-primary">Confirm</button>
+
+</body>
+</html>

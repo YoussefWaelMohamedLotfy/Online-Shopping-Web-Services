@@ -306,6 +306,10 @@
     <Compile Include="Migrations\202012241550516_UpdateTotalDatatypeInOrderCartTable.designer.cs">
       <DependentUpon>202012241550516_UpdateTotalDatatypeInOrderCartTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012282206009_AddTwoFieldsToApplicationUser.cs" />
+    <Compile Include="Migrations\202012282206009_AddTwoFieldsToApplicationUser.designer.cs">
+      <DependentUpon>202012282206009_AddTwoFieldsToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -684,6 +688,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012241550516_UpdateTotalDatatypeInOrderCartTable.resx">
       <DependentUpon>202012241550516_UpdateTotalDatatypeInOrderCartTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012282206009_AddTwoFieldsToApplicationUser.resx">
+      <DependentUpon>202012282206009_AddTwoFieldsToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -82,14 +82,15 @@ namespace Online_Shopping_Service.Controllers.Store
                 Cart = userCart,
                 CartItems = items,
                 CartTotal = cartTotal,
-                CurrentUser = user
+                CurrentUser = user,
+                CreditCard = new Card()
             };
 
             return View(checkoutViewModel);
         }
 
         // GET: /Users/ConfirmOrder
-        public ActionResult ConfirmOrder(int cartID, string method)
+        public ActionResult ConfirmOrder(int cartID, string method, string cardNumber, int cvv, double total)
         {
             email = User.Identity.GetUserName();
             var cart = context.OrderCarts.SingleOrDefault(c => c.CartID == cartID && c.UserEmail == email && c.IsCheckedOut == false);
@@ -111,9 +112,43 @@ namespace Online_Shopping_Service.Controllers.Store
                 item.IsCheckedOut = true;
             }
 
-            context.SaveChanges();
+            if (method == "CARD")
+            {
+                bool isCreditCardValid = CheckCreditCardBalanceIfSufficient(cardNumber, cvv, total);
+
+                if (isCreditCardValid)
+                {
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                context.SaveChanges();
+            }
+
 
             return RedirectToAction("Index", "Home");
+        }
+
+        private bool CheckCreditCardBalanceIfSufficient(string cardNumber, int cvvInput, double cartTotal)
+        {
+            var card = context.Cards.Single(c => c.CardNumber == cardNumber && c.CVV == cvvInput);
+
+            if (card == null)
+                return false;
+            else
+            {
+                if (card.CurrentBalance >= cartTotal)
+                    card.CurrentBalance -= (float)cartTotal;
+                else
+                    return false;
+            }
+
+            return true;
         }
     }
 }

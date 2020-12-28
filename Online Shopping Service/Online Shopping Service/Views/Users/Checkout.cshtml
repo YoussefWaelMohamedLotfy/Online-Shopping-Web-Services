@@ -37,13 +37,50 @@
                 <th>Email</th>
                 <th>@Model.CurrentUser.Email - Confirmed: @Model.CurrentUser.EmailConfirmed</th>
             </tr>
+            <tr>
+                <th>User Data</th>
+                <th>
+                    Mobile Number: @Model.CurrentUser.PhoneNumber <br/>
+                    Address: @Model.CurrentUser.Address <br/>
+                    Area: @Model.CurrentUser.Area <br/>
+                </th>
+            </tr>
+            <tr>
+                <th>Date of Arrival</th>
+                <th>@DateTime.Now.AddDays(3)</th>
+            </tr>
         </tbody>
     </table>
 
-    <h2>Confirm Order ?</h2>
+    @using (Html.BeginForm("ConfirmOrder", "Users", new { cartID = Model.Cart.CartID,
+        method = Model.Cart.PaymentMethod, cardNumber = Model.CreditCard.CardNumber,  cvv = Model.CreditCard.CVV, 
+          total = Model.CartTotal}))
+    {
+        <div class="form-group">
+            @Html.LabelFor(c => c.Cart.PaymentMethod)
+            @Html.TextBoxFor(c => c.Cart.PaymentMethod, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CreditCard.CardNumber)
+            @Html.TextBoxFor(c => c.CreditCard.CardNumber, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CreditCard.Name)
+            @Html.TextBoxFor(c => c.CreditCard.Name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(c => c.CreditCard.CVV)
+            @Html.TextBoxFor(c => c.CreditCard.CVV, new { @class = "form-control" })
+        </div>
+        @Html.HiddenFor(c => c.CreditCard.CurrentBalance)
+        <h2>Confirm Order ?</h2>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    }
+
+    @*<h2>Confirm Order ?</h2>
     <button id="checkout" data-cart-id="@Model.Cart.CartID" class="btn-default js-checkout">
-        @Html.ActionLink("Confirm", "ConfirmOrder", "Users", new { cartID = Model.Cart.CartID, method = "CASH"}, null)
-    </button>
+        @Html.ActionLink("Confirm", "ConfirmOrder", "Users", new { cartID = Model.Cart.CartID, method = "CASH" }, null)
+    </button>*@
 
 </body>
 </html>

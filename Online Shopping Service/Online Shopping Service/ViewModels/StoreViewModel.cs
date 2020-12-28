@@ -30,5 +30,6 @@ namespace Online_Shopping_Service.ViewModels
         public IEnumerable<CartItem> CartItems { get; set; }
         public double CartTotal { get; set; }
         public ApplicationUser CurrentUser { get; set; }
+        public Card CreditCard { get; set; }
     }
 }

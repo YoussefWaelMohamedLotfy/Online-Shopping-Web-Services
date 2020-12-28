@@ -46,7 +46,7 @@
                 </tr>
             </tbody>
         </table>
-        <button id="proceed" data-cart-id="@Model.CartID" class="btn-default js-proceed">
+        <button id="proceed" data-cart-id="@Model.Cart.CartID" class="btn-default js-proceed">
             @Html.ActionLink("Proceed to Checkout", "Checkout", "Users")
         </button>
     }

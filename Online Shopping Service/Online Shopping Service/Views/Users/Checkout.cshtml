@@ -41,7 +41,34 @@
     </table>
 
     <h2>Confirm Order ?</h2>
-    <button class="btn-primary">Confirm</button>
+    <button id="checkout" data-cart-id="@Model.Cart.CartID" class="btn-default js-checkout">
+        @Html.ActionLink("Confirm", "ConfirmOrder", "Users", new { cartID = Model.Cart.CartID, method = "CASH"}, null)
+    </button>
 
 </body>
 </html>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#checkout").on("click", ".js-checkout", function () {
+                var button = $(this);
+
+                $.ajax({
+                    url: "api/User/Checkout?cartId=" + button.attr("data-cart-id") + "&method=CASH",
+                    method: "GET",
+                    success: function () {
+                        console.log("Order Placed Successfully.");
+                        toastr.success("Order Placed Successfully.");
+                    },
+                    error: function () {
+                        console.log("Order Placement failed.");
+                        toastr.success("Order Placement failed.");
+                    }
+                });
+            });
+        });
+
+    </script>
+}

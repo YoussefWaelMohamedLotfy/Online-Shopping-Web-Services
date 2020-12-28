@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Online_Shopping_Service.Models;
 using Online_Shopping_Service.Models.Store;
 using Online_Shopping_Service.ViewModels;
+using System;
 
 namespace Online_Shopping_Service.Controllers.Store
 {
@@ -47,12 +48,12 @@ namespace Online_Shopping_Service.Controllers.Store
             email = User.Identity.GetUserName();
             var items = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).ToList();
             var cartTotal = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).Select(c => c.Item.Price * c.Count).DefaultIfEmpty(0).Sum();
-            int cartID = context.OrderCarts.SingleOrDefault(c => c.UserEmail == email && c.IsCheckedOut == false).CartID;
+            var cart = context.OrderCarts.SingleOrDefault(c => c.UserEmail == email && c.IsCheckedOut == false);
 
             var cartViewModel = new CartViewModel
             {
                 CartItems = items,
-                CartID = cartID,
+                Cart = cart,
                 CartTotal = cartTotal
             };
 
@@ -85,6 +86,34 @@ namespace Online_Shopping_Service.Controllers.Store
             };
 
             return View(checkoutViewModel);
+        }
+
+        // GET: /Users/ConfirmOrder
+        public ActionResult ConfirmOrder(int cartID, string method)
+        {
+            email = User.Identity.GetUserName();
+            var cart = context.OrderCarts.SingleOrDefault(c => c.CartID == cartID && c.UserEmail == email && c.IsCheckedOut == false);
+
+            if (cart == null)
+                return HttpNotFound();
+            else
+            {
+                cart.IsCheckedOut = true;
+                cart.PurchaseDate = DateTime.Now;
+                cart.ArrivalDate = DateTime.Now.AddDays(3);
+                cart.PaymentMethod = method;
+            }
+
+            var cartItems = context.CartItems.Where(c => c.CartID == cartID && c.UserEmail == email).ToList();
+
+            foreach (var item in cartItems)
+            {
+                item.IsCheckedOut = true;
+            }
+
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

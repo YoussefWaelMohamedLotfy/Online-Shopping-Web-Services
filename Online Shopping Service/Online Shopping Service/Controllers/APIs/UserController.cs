@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using Online_Shopping_Service.DTOs;
@@ -43,7 +44,7 @@ namespace Online_Shopping_Service.Controllers.APIs
         public IHttpActionResult AddToCart(int id)
         {
             OrderCart cart = context.OrderCarts.SingleOrDefault(c => c.UserEmail == email && c.IsCheckedOut == false);
-            var cartItemsCount = context.CartItems.Where(c => c.UserEmail == email).Count();
+            var cartItemsCount = context.CartItems.Where(c => c.UserEmail == email && c.IsCheckedOut == false).Count();
 
             if (cartItemsCount == 0)
             {
@@ -167,6 +168,34 @@ namespace Online_Shopping_Service.Controllers.APIs
                 return NotFound();
             else
                 cart.Total = cartTotalPrice;
+
+            context.SaveChanges();
+
+            return Ok();
+        }
+
+        // GET: /api/User/Checkout
+        [HttpGet]
+        public IHttpActionResult Checkout(int cartID, string method)
+        {
+            var cart = context.OrderCarts.SingleOrDefault(c => c.CartID == cartID && c.UserEmail == email && c.IsCheckedOut == false);
+
+            if (cart == null)
+                return NotFound();
+            else
+            {
+                cart.IsCheckedOut = true;
+                cart.PurchaseDate = DateTime.Now;
+                cart.ArrivalDate = DateTime.Now.AddDays(3);
+                cart.PaymentMethod = method;
+            }
+
+            var cartItems = context.CartItems.Where(c => c.CartID == cartID && c.UserEmail == email).ToList();
+
+            foreach (var item in cartItems)
+            {
+                item.IsCheckedOut = true;
+            }
 
             context.SaveChanges();
 

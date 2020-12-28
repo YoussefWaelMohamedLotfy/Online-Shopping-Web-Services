@@ -15,7 +15,7 @@ namespace Online_Shopping_Service.ViewModels
     public class CartViewModel
     {
         public IEnumerable<CartItem> CartItems { get; set; }
-        public int CartID { get; set; }
+        public OrderCart Cart { get; set; }
         public double CartTotal { get; set; }
     }
 

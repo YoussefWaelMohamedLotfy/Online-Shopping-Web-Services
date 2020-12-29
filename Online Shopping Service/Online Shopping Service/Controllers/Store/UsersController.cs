@@ -90,7 +90,7 @@ namespace Online_Shopping_Service.Controllers.Store
         }
 
         // GET: /Users/ConfirmOrder
-        public ActionResult ConfirmOrder(int cartID, string method, string cardNumber, int cvv, double total)
+        public ActionResult ConfirmOrder(CheckoutViewModel viewModel, int cartID, double total)
         {
             email = User.Identity.GetUserName();
             var cart = context.OrderCarts.SingleOrDefault(c => c.CartID == cartID && c.UserEmail == email && c.IsCheckedOut == false);
@@ -102,7 +102,7 @@ namespace Online_Shopping_Service.Controllers.Store
                 cart.IsCheckedOut = true;
                 cart.PurchaseDate = DateTime.Now;
                 cart.ArrivalDate = DateTime.Now.AddDays(3);
-                cart.PaymentMethod = method;
+                cart.PaymentMethod = viewModel.Cart.PaymentMethod;
             }
 
             var cartItems = context.CartItems.Where(c => c.CartID == cartID && c.UserEmail == email).ToList();
@@ -112,9 +112,9 @@ namespace Online_Shopping_Service.Controllers.Store
                 item.IsCheckedOut = true;
             }
 
-            if (method == "CARD")
+            if (viewModel.Cart.PaymentMethod == "CARD")
             {
-                bool isCreditCardValid = CheckCreditCardBalanceIfSufficient(cardNumber, cvv, total);
+                bool isCreditCardValid = CheckCreditCardBalanceIfSufficient(viewModel.CreditCard.CardNumber, viewModel.CreditCard.CVV, total);
 
                 if (isCreditCardValid)
                 {
@@ -136,7 +136,7 @@ namespace Online_Shopping_Service.Controllers.Store
 
         private bool CheckCreditCardBalanceIfSufficient(string cardNumber, int cvvInput, double cartTotal)
         {
-            var card = context.Cards.Single(c => c.CardNumber == cardNumber && c.CVV == cvvInput);
+            var card = context.Cards.SingleOrDefault(c => c.CardNumber == cardNumber && c.CVV == cvvInput);
 
             if (card == null)
                 return false;

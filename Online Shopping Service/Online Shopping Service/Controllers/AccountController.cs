@@ -382,7 +382,14 @@ namespace Online_Shopping_Service.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser 
+                { 
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address,
+                    Area = model.Area
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

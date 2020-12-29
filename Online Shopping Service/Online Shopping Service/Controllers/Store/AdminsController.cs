@@ -12,6 +12,7 @@ using Online_Shopping_Service.ViewModels;
 
 namespace Online_Shopping_Service.Controllers.Store
 {
+    [Authorize(Roles = "IsAdmin")]
     public class AdminsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

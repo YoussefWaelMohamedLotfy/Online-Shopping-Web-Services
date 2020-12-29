@@ -8,6 +8,16 @@ namespace Online_Shopping_Service.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        public string Address { get; set; }
+
+        [Required]
+        public string Area { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ExternalLoginListViewModel

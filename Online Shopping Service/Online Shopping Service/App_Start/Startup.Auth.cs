@@ -54,9 +54,9 @@ namespace Online_Shopping_Service
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "471203627208093",
+               appSecret: "841ad00d39bd2fd7801b1c337ea0e5ed");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

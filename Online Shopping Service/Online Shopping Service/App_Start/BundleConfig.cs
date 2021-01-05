@@ -14,7 +14,7 @@ namespace Online_Shopping_Service
                         "~/Scripts/bootbox.js",
                         "~/Scripts/toastr.js",
                         "~/Scripts/DataTables/jquery.datatables.js",
-                        "~/Scripts/DataTables/datatables.bootstrap.js"
+                        "~/Scripts/DataTables/datatables.bootstrap4.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -26,8 +26,8 @@ namespace Online_Shopping_Service
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/DataTables/css/datatables.bootstrap.css",
+                      "~/Content/bootstrap-darkly.css",
+                      "~/Content/DataTables/css/datatables.bootstrap4.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));
         }

@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Online_Shopping_Service.Models;
+using System.Configuration;
 
 namespace Online_Shopping_Service
 {
@@ -55,8 +56,8 @@ namespace Online_Shopping_Service
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "471203627208093",
-               appSecret: "841ad00d39bd2fd7801b1c337ea0e5ed");
+               appId: ConfigurationManager.AppSettings["FacebookAppID"],
+               appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

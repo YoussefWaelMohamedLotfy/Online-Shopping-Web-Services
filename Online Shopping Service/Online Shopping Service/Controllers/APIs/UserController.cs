@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using Online_Shopping_Service.Core;
 using Online_Shopping_Service.DTOs;
 using Online_Shopping_Service.Models;
 using Online_Shopping_Service.Models.Store;

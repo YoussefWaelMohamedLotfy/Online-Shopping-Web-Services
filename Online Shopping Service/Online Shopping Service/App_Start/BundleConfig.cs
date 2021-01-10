@@ -26,7 +26,8 @@ namespace Online_Shopping_Service
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-darkly.css",
+                      "~/Content/bootstrap-flatly.css",
+					  "~/Content/bootstrap-darkly.css",
                       "~/Content/DataTables/css/datatables.bootstrap4.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));

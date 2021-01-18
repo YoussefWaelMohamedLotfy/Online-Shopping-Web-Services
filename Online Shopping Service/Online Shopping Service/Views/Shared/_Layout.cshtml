@@ -12,8 +12,7 @@
 <body style="padding-top:unset; padding-bottom:unset" class="hold-transition skin-blue sidebar-mini">
     @Html.Partial("_NavBar")
     <div class="container body-content">
-        <a href="#" onclick="changeCSS('~/Content/bootstrap-flatly.css', 0);">Flatly</a>
-        <a href="#" onclick="changeCSS('~/Content/bootstrap-darkly.css', 0);">Darkly</a>
+        @Html.MvcSiteMap().SiteMapPath()
         @RenderBody()
         <hr />
         <footer>
@@ -41,7 +40,5 @@
             document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
         }
     </script>
-
-
 
 }

@@ -11,6 +11,7 @@ using Online_Shopping_Service.Persistence;
 
 namespace Online_Shopping_Service.Controllers.APIs
 {
+    [Authorize]
     public class AdminController : ApiController
     {
         private readonly ApplicationDbContext _context;
@@ -24,7 +25,7 @@ namespace Online_Shopping_Service.Controllers.APIs
         [HttpGet]
         public IHttpActionResult GetItems()
         {
-            return Ok(_context.Items.ToList().Select(StoreMapper.mapper.Map<Item, ItemDto>));
+            return Json(_context.Items.ToList().Select(StoreMapper.mapper.Map<Item, ItemDto>));
         }
 
         // GET: /api/Admin/GetItem/1

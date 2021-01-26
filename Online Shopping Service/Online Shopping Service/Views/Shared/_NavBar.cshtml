@@ -1,6 +1,4 @@
-﻿@model Online_Shopping_Service.Models.Store.OrderCart
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     @Html.ActionLink("Online Shopping Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
     <div class="collapse navbar-collapse" id="navbarColor01">
@@ -15,7 +13,7 @@
                 @Html.ActionLink("Store", "Index", "Users", null, new { @class = "nav-link" })
             </li>
             <li class="nav-item">
-                @Html.ActionLink($"Cart ({Model?.CartItems.Count ?? 0})", "ShowCart", "Users", null, new { @class = "nav-link" })
+                @Html.ActionLink("Cart", "ShowCart", "Users", null, new { @class = "nav-link" })
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Themes</a>

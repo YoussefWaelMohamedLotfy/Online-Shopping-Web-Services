@@ -9,10 +9,12 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body style="padding-top:unset; padding-bottom:unset" class="hold-transition skin-blue sidebar-mini">
+<body style="padding-top:unset" class="hold-transition skin-blue sidebar-mini">
     @Html.Partial("_NavBar")
     <div class="container body-content">
-        @Html.MvcSiteMap().SiteMapPath()
+        <div style="margin-top: 5px">
+            @Html.MvcSiteMap().SiteMapPath()
+        </div>
         @RenderBody()
         <hr />
         <footer>

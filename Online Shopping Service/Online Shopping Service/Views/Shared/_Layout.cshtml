@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-flatly.css" />
+    <link href="//netdna.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css" rel="stylesheet" title="main">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -26,21 +26,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
-@section scripts
-{
-    <script>
-        function changeCSS(cssFile, cssLinkIndex) {
-
-            var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
-
-            var newlink = document.createElement("link");
-            newlink.setAttribute("rel", "stylesheet");
-            newlink.setAttribute("type", "text/css");
-            newlink.setAttribute("href", cssFile);
-
-            document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-        }
-    </script>
-
-}

@@ -13,6 +13,7 @@ namespace Online_Shopping_Service
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/toastr.js",
+                        "~/Scripts/themechanger.js",
                         "~/Scripts/DataTables/jquery.datatables.js",
                         "~/Scripts/DataTables/datatables.bootstrap4.js"
                         ));
@@ -26,8 +27,8 @@ namespace Online_Shopping_Service
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-flatly.css",
-					  "~/Content/bootstrap-darkly.css",
+                      //"~/Content/bootstrap-flatly.css",
+					  //"~/Content/bootstrap-darkly.css",
                       "~/Content/DataTables/css/datatables.bootstrap4.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));

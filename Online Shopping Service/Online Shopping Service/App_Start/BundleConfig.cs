@@ -14,6 +14,7 @@ namespace Online_Shopping_Service
                         "~/Scripts/bootbox.js",
                         "~/Scripts/toastr.js",
                         "~/Scripts/themechanger.js",
+                        "~/Scripts/fontawesome.js",
                         "~/Scripts/DataTables/jquery.datatables.js",
                         "~/Scripts/DataTables/datatables.bootstrap4.js"
                         ));
@@ -31,6 +32,7 @@ namespace Online_Shopping_Service
 					  //"~/Content/bootstrap-darkly.css",
                       "~/Content/DataTables/css/datatables.bootstrap4.css",
                       "~/Content/toastr.css",
+                      //"~/Content/all.css",
                       "~/Content/site.css"));
         }
     }

@@ -17,10 +17,11 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Themes</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" class="change-style-menu-item" rel="flatly">Flatly</a></li>
-                    <li><a href="#" class="change-style-menu-item" rel="darkly">Darkly</a></li>
-                </ul>
+                <div class="dropdown-menu">
+                    <button class="change-style-menu-item dropdown-item" rel="flatly">Flatly</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="change-style-menu-item dropdown-item" rel="darkly">Darkly</button>
+                </div>
             </li>
         </ul>
         @Html.Partial("_LoginPartial")

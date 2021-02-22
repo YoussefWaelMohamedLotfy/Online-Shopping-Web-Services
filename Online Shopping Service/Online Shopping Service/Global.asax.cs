@@ -9,6 +9,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using AutoMapper;
+using Microsoft.AspNet.SignalR;
 
 namespace Online_Shopping_Service
 {

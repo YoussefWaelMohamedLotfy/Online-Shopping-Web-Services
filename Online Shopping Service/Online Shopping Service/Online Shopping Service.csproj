@@ -60,6 +60,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=5.0.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.Internal.5.0.3\lib\net461\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
     </Reference>
@@ -152,6 +158,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -263,6 +270,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Store\AdminsController.cs" />
+    <Compile Include="Controllers\Store\ChatController.cs" />
     <Compile Include="Controllers\Store\UsersController.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IItemsRepository.cs" />
@@ -273,6 +281,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Migrations\202012142250311_InitialModel.cs" />
     <Compile Include="Migrations\202012142250311_InitialModel.designer.cs">
       <DependentUpon>202012142250311_InitialModel.cs</DependentUpon>
@@ -325,6 +334,10 @@
     <Compile Include="Migrations\202012282206009_AddTwoFieldsToApplicationUser.designer.cs">
       <DependentUpon>202012282206009_AddTwoFieldsToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102220824587_AddMessageModel.cs" />
+    <Compile Include="Migrations\202102220824587_AddMessageModel.designer.cs">
+      <DependentUpon>202102220824587_AddMessageModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -332,6 +345,7 @@
     <Compile Include="Models\Store\Card.cs" />
     <Compile Include="Models\Store\CartItem.cs" />
     <Compile Include="Models\Store\Item.cs" />
+    <Compile Include="Models\Store\Message.cs" />
     <Compile Include="Models\Store\OrderCart.cs" />
     <Compile Include="Persistence\MappingProfiles\StoreProfile.cs" />
     <Compile Include="Persistence\Repositories\ItemsRepository.cs" />
@@ -540,6 +554,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\brands.js" />
     <Content Include="Scripts\brands.min.js" />
+    <Content Include="Scripts\chat.js" />
     <Content Include="Scripts\conflict-detection.js" />
     <Content Include="Scripts\conflict-detection.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -585,6 +600,7 @@
     <Content Include="fonts\fa-solid-900.ttf" />
     <Content Include="fonts\fa-solid-900.woff" />
     <Content Include="fonts\fa-solid-900.woff2" />
+    <Content Include="libman.json" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -671,6 +687,8 @@
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -682,6 +700,7 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\regular.js" />
     <Content Include="Scripts\regular.min.js" />
+    <Content Include="Scripts\signalrReqHandler.js" />
     <Content Include="Scripts\solid.js" />
     <Content Include="Scripts\solid.min.js" />
     <Content Include="Scripts\src\index.js" />
@@ -815,6 +834,7 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\Chat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -864,6 +884,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012282206009_AddTwoFieldsToApplicationUser.resx">
       <DependentUpon>202012282206009_AddTwoFieldsToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102220824587_AddMessageModel.resx">
+      <DependentUpon>202102220824587_AddMessageModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

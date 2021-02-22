@@ -14,5 +14,10 @@ namespace Online_Shopping_Service.Hubs
         {
             await Clients.All.SendAsync("receiveMessages", message);
         }
+
+        public async Task Send(string name, string message)
+        {
+            await Clients.All.addNewMessageToPage(name, message);
+        }
     }
 }

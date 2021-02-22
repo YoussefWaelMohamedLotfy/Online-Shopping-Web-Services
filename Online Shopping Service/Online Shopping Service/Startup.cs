@@ -10,7 +10,7 @@ namespace Online_Shopping_Service
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            app.MapSignalR("/Chat/Index", new HubConfiguration { EnableDetailedErrors = true });
+            app.MapSignalR();
         }
     }
 }

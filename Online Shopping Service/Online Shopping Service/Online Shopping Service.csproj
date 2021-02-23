@@ -282,6 +282,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\NotificationHub.cs" />
     <Compile Include="Migrations\202012142250311_InitialModel.cs" />
     <Compile Include="Migrations\202012142250311_InitialModel.designer.cs">
       <DependentUpon>202012142250311_InitialModel.cs</DependentUpon>
@@ -338,6 +339,10 @@
     <Compile Include="Migrations\202102220824587_AddMessageModel.designer.cs">
       <DependentUpon>202102220824587_AddMessageModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102231652098_AddDateToItemModel.cs" />
+    <Compile Include="Migrations\202102231652098_AddDateToItemModel.designer.cs">
+      <DependentUpon>202102231652098_AddDateToItemModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -347,6 +352,7 @@
     <Compile Include="Models\Store\Item.cs" />
     <Compile Include="Models\Store\Message.cs" />
     <Compile Include="Models\Store\OrderCart.cs" />
+    <Compile Include="Persistence\Components\NotificationComponent.cs" />
     <Compile Include="Persistence\MappingProfiles\StoreProfile.cs" />
     <Compile Include="Persistence\Repositories\ItemsRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
@@ -530,6 +536,7 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\notification.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -838,7 +845,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Persistence\EntityConfigurations\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -887,6 +893,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102220824587_AddMessageModel.resx">
       <DependentUpon>202102220824587_AddMessageModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102231652098_AddDateToItemModel.resx">
+      <DependentUpon>202102231652098_AddDateToItemModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,8 @@ namespace Online_Shopping_Service.Models.Store
         [Display(Name = "Stock Count")]
         public byte RemainingCount { get; set; }
 
+        public DateTime AddedOn { get; set; }
+
         public virtual ICollection<CartItem> CartItems { get; set; }
     }
 }

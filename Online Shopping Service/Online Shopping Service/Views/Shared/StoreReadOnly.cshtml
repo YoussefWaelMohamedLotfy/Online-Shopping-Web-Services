@@ -13,6 +13,10 @@
     <table id="items" class="table table-bordered table-hover">
         <thead>
             <tr>
+                <th colspan="5">Item Info</th>
+                <th colspan="1"></th>
+            </tr>
+            <tr>
                 <th>Item Name</th>
                 <th>Description</th>
                 <th>Category</th>
@@ -42,7 +46,10 @@
 {
     <script>
         $(document).ready(function () {
-            $("#items").DataTable({
+            var table = $("#items").DataTable({
+                //scrollX: true,
+                //scrollY: 200,
+                stateSave: true,
                 ajax: {
                     url: "/api/User/GetItems",
                     dataSrc: ""
@@ -71,6 +78,11 @@
                     }
                 ]
             });
+
+            setInterval(function () {
+                table.ajax.reload();
+                //console.log('Data reloaded in Datatable');
+            }, 30000);
 
             $("#items").on("click", ".js-add", function () {
                 var button = $(this);

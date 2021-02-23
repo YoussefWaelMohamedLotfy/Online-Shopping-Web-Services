@@ -4,8 +4,16 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
+    
 
     <ul class="nav navbar-nav navbar-right">
+        <li>
+            <span class="noti fas fa-bell"><span class="count">&nbsp;</span></span>
+            <div class="noti-content">
+                <div class="noti-top-arrow"></div>
+                <ul id="noti-content"></ul>
+            </div>
+        </li>
         <li class="nav-item active">
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
         </li>

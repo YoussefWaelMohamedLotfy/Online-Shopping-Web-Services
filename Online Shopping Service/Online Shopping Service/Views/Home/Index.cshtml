@@ -5,6 +5,36 @@
 <div class="jumbotron">
     <h1>Welcome to Online Shopping Store</h1>
     <p class="lead">Made with ASP.NET MVC Framework</p>
+    <hr class="my-4">
+    <p>Watch the intro video to know more about ASP.NET and C#</p>
+    <p class="lead">
+        <a id="vidbutton" class="btn btn-primary btn-lg" href="#videointro" role="button">Watch intro</a>
+        <button type="button" class="btn btn-secondary btn-lg" data-target="#mymodal" data-toggle="modal">Watch another intro</button>
+    </p>
+    <div class="modal" id="mymodal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">ASP.NET & C# Intro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe width="470"
+                            height="315"
+                            src="https://www.youtube.com/embed/S3tTkd3_dzQ"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">
@@ -17,13 +47,37 @@
     <div class="col-md-4">
         <h2>Plugins for Ease</h2>
         <p>Third-Party Libraries are used to help the development of this website.</p> <br />
-        <i class="fas fa-camera"></i>
     </div>
     <div class="col-md-4">
         <h2>Smooth Shopping Experience</h2>
         <p>
-            You can easily find all your need in this website. <br/>
+            You can easily find all your need in this website. <br />
             @Html.ActionLink("Shop now !", "Index", "Users")
         </p>
     </div>
 </div>
+<br />
+<br />
+<div id="videointro" align="center">
+    <iframe width="1000"
+            height="515"
+            src="https://www.youtube.com/embed/IJgBn6Bd-nc"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#vidbutton").click(function () {
+                $('html, body').animate({
+                    scrollTop: $("#videointro").offset().top - 100
+                }, 'slow');
+            });
+        });
+    </script>
+
+}

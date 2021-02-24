@@ -534,16 +534,10 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\notification.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\fa-brands-400.svg" />
-    <Content Include="fonts\fa-regular-400.svg" />
-    <Content Include="fonts\fa-solid-900.svg" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\all.js" />
@@ -590,23 +584,6 @@
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fa-brands-400.eot" />
-    <Content Include="fonts\fa-brands-400.ttf" />
-    <Content Include="fonts\fa-brands-400.woff" />
-    <Content Include="fonts\fa-brands-400.woff2" />
-    <Content Include="fonts\fa-regular-400.eot" />
-    <Content Include="fonts\fa-regular-400.ttf" />
-    <Content Include="fonts\fa-regular-400.woff" />
-    <Content Include="fonts\fa-regular-400.woff2" />
-    <Content Include="fonts\fa-solid-900.eot" />
-    <Content Include="fonts\fa-solid-900.ttf" />
-    <Content Include="fonts\fa-solid-900.woff" />
-    <Content Include="fonts\fa-solid-900.woff2" />
     <Content Include="libman.json" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
@@ -845,6 +822,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fonts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,4 +1,8 @@
-﻿.noti-content {
+﻿body {
+
+}
+
+.noti-content {
     position: fixed;
     right: 100px;
     background: #E5E5E5;

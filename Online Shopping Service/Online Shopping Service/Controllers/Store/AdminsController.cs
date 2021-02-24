@@ -66,7 +66,10 @@ namespace Online_Shopping_Service.Controllers.Store
         public ActionResult AddNewItem(NewItemViewModel viewModel)
         {
             if (viewModel.Item.ID == 0)
+            {
+                viewModel.Item.AddedOn = DateTime.Now;
                 context.Items.Add(viewModel.Item);
+            }
             else
             {
                 var itemInDb = context.Items.Single(c => c.ID == viewModel.Item.ID);

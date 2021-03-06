@@ -28,7 +28,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>4.1</TypeScriptToolsVersion>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
   </PropertyGroup>
@@ -767,6 +767,7 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\v4-shims.js" />
     <Content Include="Scripts\v4-shims.min.js" />
+    <Content Include="Sounds\beep.wav" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

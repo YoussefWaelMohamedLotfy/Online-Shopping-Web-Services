@@ -29,7 +29,7 @@ namespace Online_Shopping_Service.Controllers.Store
         }
 
         // GET: Chat
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             //var currentUser = User.Identity.GetUserName();
             //ViewBag.CurrentUser = currentUser;

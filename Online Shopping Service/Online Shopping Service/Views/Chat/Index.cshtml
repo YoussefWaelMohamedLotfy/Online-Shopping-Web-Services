@@ -41,9 +41,20 @@
                 });
             });
         });
+
         function htmlEncode(value) {
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
         }
+
+        function keypressHandler(e) {
+            if (e.which == 13) {
+                e.preventDefault(); //stops default action: submitting form
+                $(this).blur();
+                $('#sendmessage').focus().click();
+            }
+        }
+
+        $('#message').keypress(keypressHandler);
     </script>
 }

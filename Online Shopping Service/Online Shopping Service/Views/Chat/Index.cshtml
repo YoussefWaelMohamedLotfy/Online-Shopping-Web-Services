@@ -8,7 +8,7 @@
 <audio id="beepSound" src="~/Sounds/beep.wav"></audio>
 <div class="form-group col-xl-12">
     <label style="color: blue; font-style: oblique;font-size: medium" id="label1">Write Your Message Here!</label><br />
-    <textarea class="form-control" rows="4" cols="40" id="message" placeholder="Share what's on your mind..."></textarea>
+    <textarea class="form-control" rows="4" cols="40" id="message" placeholder="Enter message..."></textarea>
     <br />
     <input type="button" class="btn btn-primary" id="sendmessage" value="Send" />
     <br />
@@ -29,7 +29,7 @@
             var chat = $.connection.chatHub;
             chat.client.addNewMessageToPage = function (name, message) {
                 $('#discussion').append('<li>' + '<div class="card border-primary mb-3"> ' + 
-                                                        '<div class="card-header">' + htmlEncode(name) + '</div>' + 
+                                            '<div class="card-header">' + htmlEncode(name) + '</div>' + 
                                                             '<div class="card-body">' + 
                                                                 '<p class="card-text">' + htmlEncode(message) + '</p>' + 
                                         '</div></div> </li>');

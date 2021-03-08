@@ -37,6 +37,11 @@ namespace Online_Shopping_Service.Controllers.Store
             return View();
         }
 
+        public ActionResult ChatAdvanced()
+        {
+            return View();
+        }
+
         public async Task<ActionResult> Create(Message message)
         {
             if (ModelState.IsValid)

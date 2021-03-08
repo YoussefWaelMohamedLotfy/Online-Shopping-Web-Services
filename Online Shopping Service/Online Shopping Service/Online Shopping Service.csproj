@@ -832,6 +832,7 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\Chat\ChatAdvanced.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

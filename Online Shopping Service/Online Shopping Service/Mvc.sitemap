@@ -11,6 +11,7 @@
       <mvcSiteMapNode title="Cart" controller="Users" action="ShowCart"/>
     </mvcSiteMapNode>
     <mvcSiteMapNode title="Chat" controller="Chat" action="Index" />
+    <mvcSiteMapNode title="Chat" controller="Chat" action="ChatAdvanced" />
   </mvcSiteMapNode>
 
 </mvcSiteMap>

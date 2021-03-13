@@ -8,7 +8,9 @@
     <mvcSiteMapNode title="Login" controller="Account" action="Login"/>
     <mvcSiteMapNode title="Register" controller="Account" action="Register"/>
     <mvcSiteMapNode title="Store" controller="Users" action="Index">
-      <mvcSiteMapNode title="Cart" controller="Users" action="ShowCart"/>
+      <mvcSiteMapNode title="Cart" controller="Users" action="ShowCart">
+        <mvcSiteMapNode title="Checkout" controller="Users" action="Checkout"/>
+      </mvcSiteMapNode>
     </mvcSiteMapNode>
     <mvcSiteMapNode title="Chat" controller="Chat" action="Index" />
     <mvcSiteMapNode title="Chat" controller="Chat" action="ChatAdvanced" />

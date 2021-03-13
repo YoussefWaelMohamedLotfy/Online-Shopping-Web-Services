@@ -1,0 +1,67 @@
+﻿
+
+<div class="container wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-success">
+                <div class="panel-heading" id="accordion">
+                    <span class="fa fa-comment"></span>Lets Chat
+                    <div class="btn-group pull-right">
+                        <a type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <span class="fa fa-chevron-down"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-collapse collapse" id="collapseOne">
+                    <div class="panel-body">
+                        <ul id="messageList" class="chat">
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" id="userName" class="form-control input-sm" placeholder="Type your Name." />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" id="userMessage" class="form-control input-sm" placeholder="Type your message here..." />
+                                </div>
+                            </div>
+                            <span class="input-group-btn">
+                                <input type="button" value="send" id="sendMessage" class="btn btn-danger">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        const connection = $.connection.chatHub;
+
+        connection.on("ReceiveMessage", (user, message) => {
+            const rec_msg = user + ": " + message;
+            const li = document.createElement("li");
+            li.textContent = rec_msg;
+            document.getElementById("messageList").appendChild(li);
+        });
+
+        connection.start().catch(err => console.error(err.toString()));
+
+        document.getElementById("sendMessage").addEventListener("click", event => {
+            const user = document.getElementById("userName").value;
+            const message = document.getElementById("userMessage").value;
+
+            connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
+            event.preventDefault();
+        });
+
+
+    </script>
+} 

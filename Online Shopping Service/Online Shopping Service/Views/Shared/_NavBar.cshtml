@@ -1,4 +1,25 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+﻿<style>
+    .navbar {
+        list-style: none;
+        float: left;
+    }
+
+        .navbar li {
+            border-right: 2px solid #c4c4c4;
+            display: inline-block;
+            float: left;
+        }
+
+            .navbar li:nth-child(5), li:nth-child(6), li:last-child {
+                /*border-right: 2px solid #c4c4c4;*/
+            }
+
+    .dropdown-menu li {
+        border-right: 0px;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     @Html.ActionLink("Online Shopping Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
     <div class="collapse navbar-collapse" id="navbarColor01">
@@ -17,6 +38,9 @@
             </li>
             <li class="nav-item">
                 @Html.ActionLink("Chat(New)", "ChatAdvanced", "Chat", null, new { @class = "nav-link", target = "_blank" })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Chat(Best)", "ChatCustom", "Chat", null, new { @class = "nav-link", target = "_blank" })
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Themes</a>

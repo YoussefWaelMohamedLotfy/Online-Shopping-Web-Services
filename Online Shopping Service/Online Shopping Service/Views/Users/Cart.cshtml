@@ -46,9 +46,7 @@
                 </tr>
             </tbody>
         </table>
-        <button id="proceed" data-cart-id="@Model.Cart.CartID" class="btn-default js-proceed">
-            @Html.ActionLink("Proceed to Checkout", "Checkout", "Users")
-        </button>
+        @Html.ActionLink("Proceed to Checkout", "Checkout", "Users", null, new { @class = "btn btn-primary" })
     }
 
 </body>
@@ -79,18 +77,6 @@
                     }
                 });
             });
-
-            $("#proceed").on("click", ".js-proceed", function () {
-                $.ajax({
-                    url: "api/User/ProceedToCheckout",
-                    method: "GET",
-                    success: function () {
-                        console.log("Checkout Success.");
-                        window.location.href = "/Users/Checkout/";
-                    }
-                });
-            });
         });
-
     </script>
 }

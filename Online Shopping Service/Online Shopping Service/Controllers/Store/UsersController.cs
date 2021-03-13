@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Vereyon.Web;
 using Microsoft.AspNet.Identity;
 using Online_Shopping_Service.Models;
 using Online_Shopping_Service.Models.Store;
@@ -111,6 +112,8 @@ namespace Online_Shopping_Service.Controllers.Store
             {
                 item.IsCheckedOut = true;
             }
+
+            FlashMessage.Info("Order Confirmed", $"Order arriving at {cart.ArrivalDate}");
 
             if (viewModel.Cart.PaymentMethod == "CARD")
             {

@@ -5,6 +5,7 @@
 <div class="jumbotron">
     <h1>Welcome to Online Shopping Store</h1>
     <p class="lead">Made with ASP.NET MVC Framework</p>
+    <p class="lead">Online Users : <strong id="counter"/></p>
     <span class="badge badge-info">Top Framework</span>
     <span class="badge badge-light">#1 Worldwide</span>
     <hr class="my-4">
@@ -72,6 +73,7 @@
 
 @section scripts
 {
+    <script src="~/signalr/hubs"></script>
     <script>
         $(document).ready(function () {
             $("#vidbutton").click(function () {
@@ -81,5 +83,17 @@
             });
         });
     </script>
+    <script>
+        $(function () {
+            var counterHub = $.connection.counterHub;
 
+            $.connection.hub.start().done(function () {
+                toastr.info('Client Connected');
+            });
+
+            counterHub.client.UpdateCount = function (count) {
+                $('#counter').text(count);
+            }
+        });
+    </script>
 }

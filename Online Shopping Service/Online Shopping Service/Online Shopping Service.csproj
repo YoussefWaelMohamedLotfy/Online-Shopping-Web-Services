@@ -285,6 +285,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\CounterHub.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
     <Compile Include="Migrations\202012142250311_InitialModel.cs" />
     <Compile Include="Migrations\202012142250311_InitialModel.designer.cs">

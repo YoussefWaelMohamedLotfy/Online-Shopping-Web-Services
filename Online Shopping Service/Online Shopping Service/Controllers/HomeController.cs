@@ -22,6 +22,7 @@ namespace Online_Shopping_Service.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -10,6 +10,7 @@ namespace Online_Shopping_Service
         {
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.validate.unobtrusive.min.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/toastr.js",

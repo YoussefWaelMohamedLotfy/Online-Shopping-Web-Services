@@ -66,7 +66,6 @@ namespace Online_Shopping_Service
 
             //Status is one of Queued, Sending, Sent, Failed or null if the number is not valid
             Trace.TraceInformation(result.Status.ToString());
-            //Twilio doesn't currently have an async API, so return success.
             return Task.FromResult(0);
         }
     }
